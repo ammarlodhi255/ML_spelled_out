@@ -16,32 +16,35 @@ class LogisticRegression():
         y_hat = self.predict(X)
         m = X.shape[0]
         losses = (y * np.log(y_hat) + (1 - y) * np.log(1 - y_hat))
-        return (1/m) * np.sum(losses)
+        return -(1/m) * np.sum(losses)
     
 
     def fit(self, X, y):
         m, n = X.shape
+        dj_dw = np.zeros((n,))
 
         for _ in range(self.iterations):
             y_hat = self.predict(X)
+            err = y_hat - y
+
             for i in range(n):
-                dj_dw = (1/m) * (np.sum((y_hat - y) * X[:, i]))
-            dj_db = (1/m) * np.sum(y_hat - y)
+                dj_dw[i] = (1/m) * (np.sum((err) * X[:, i]))
+            dj_db = (1/m) * np.sum(err)
 
             temp_w = self.w - self.lr * dj_dw
             temp_b = self.b - self.lr * dj_db
             self.w = temp_w 
             self.b = temp_b 
+            
+            cost = self._compute_cost(X, y)
+            print(f"Cost: {cost}")
 
-            print(f"Cost: {self._compute_cost(X, y)}")
 
 if __name__ == "__main__":
-    np.random.seed(42)
-    X_train = np.random.randint(10, 1000, size=(100, 8)).astype("float64")
-    y_train = np.random.randint(0, 2, 100)
+    X_train = np.array([[0.5, 1.5], [1,1], [1.5, 0.5], [3, 0.5], [2, 2], [1, 2.5]])
+    y_train = np.array([0, 0, 0, 1, 1, 1])
 
-    lr = LogisticRegression(lr = 0.000001)
-    
+    lr = LogisticRegression(lr = 0.001, iterations=10000)
     lr.fit(X_train, y_train)
 
 
