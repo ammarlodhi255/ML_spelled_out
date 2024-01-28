@@ -11,12 +11,6 @@ class LogisticRegression():
     def predict(self, X):
         z = np.dot(X, self.w) + self.b
         return (1 / (1 + np.exp(-z)))
-
-    def _compute_cost(self, X, y):
-        y_hat = self.predict(X)
-        m = X.shape[0]
-        losses = (y * np.log(y_hat) + (1 - y) * np.log(1 - y_hat))
-        return -(1/m) * np.sum(losses)
     
 
     def fit(self, X, y):
@@ -36,8 +30,6 @@ class LogisticRegression():
             self.w = temp_w 
             self.b = temp_b 
             
-            cost = self._compute_cost(X, y)
-            print(f"Cost: {cost}")
 
 
 if __name__ == "__main__":
