@@ -57,28 +57,10 @@ class LinearRegression():
         return dj_dw, dj_db
 
 
-    def update_cost(self, current_cost, min_cost, min_w, min_b):
-        if current_cost < min_cost:
-            min_cost = current_cost 
-            min_w = min_w
-            min_b = min_b 
-
-        return min_cost, min_w, min_b
-
 
     def fit(self, lr=0.001, epochs=100):
-        min_cost = float('inf')
-        min_w = []
-        min_b = 0.0
-        current_cost = float('inf')
-
         for i in range(epochs):
-            current_cost = self.compute_cost()
-            # print(current_cost)
-            min_cost, min_w, min_b = self.update_cost(current_cost, min_cost, min_w, min_b)
-
             dj_dw, dj_db = self.compute_gradients()
-
             self.w = self.w - lr*dj_dw 
             self.b = self.b - lr*dj_db
             
