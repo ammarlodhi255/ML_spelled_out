@@ -28,7 +28,7 @@ class KNNClassifier():
         for sample in self.X:
             distances.append(euclidean_dist(x, sample))
 
-        sorted_indices = np.argsort(np.array(distances))[:3]
+        sorted_indices = np.argsort(np.array(distances))[:self.n_neighbors]
         classes = [self.y[index] for index in sorted_indices]
         return classes
 
