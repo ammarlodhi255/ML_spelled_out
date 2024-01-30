@@ -34,6 +34,7 @@ class KNNRegressor():
         return np.mean(values)
 
 
+
 if __name__ == "__main__":
     from sklearn.preprocessing import StandardScaler
     from sklearn.model_selection import train_test_split
