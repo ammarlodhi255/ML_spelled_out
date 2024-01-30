@@ -29,3 +29,4 @@ class KNNRegressor():
             distances.append(euclidean_dist(x, sample))
         
         sorted_indices = np.argsort(np.array(distances))[:self.n_neighbors]
+        

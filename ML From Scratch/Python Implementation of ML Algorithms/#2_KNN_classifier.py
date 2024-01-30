@@ -19,7 +19,6 @@ class KNNClassifier():
 
     def predict(self, X):
         votes_for_all = [self._predict(x) for x in X]
-        votes_for_all = [self._majority_vote(votes) for votes in votes_for_all]
         return votes_for_all
 
 
@@ -30,7 +29,9 @@ class KNNClassifier():
 
         sorted_indices = np.argsort(np.array(distances))[:self.n_neighbors]
         classes = [self.y[index] for index in sorted_indices]
-        return classes
+        pred_class = self._majority_vote(classes)
+
+        return pred_class
 
 
     @staticmethod
@@ -54,7 +55,7 @@ if __name__ == "__main__":
     sc = StandardScaler()
     X_train, X_test = sc.fit_transform(X_train), sc.fit_transform(X_test)
     
-    knn = KNNClassifier(n_neighbors=3)
+    knn = KNNClassifier(n_neighbors=5)
     knn.fit(X_train, y_train)
     y_pred = knn.predict(X_test)
 
