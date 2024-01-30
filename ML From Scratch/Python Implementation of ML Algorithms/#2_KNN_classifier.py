@@ -32,6 +32,7 @@ class KNNClassifier():
         classes = [self.y[index] for index in sorted_indices]
         return classes
 
+
     @staticmethod
     def _majority_vote(votes):
         counts = np.bincount(votes)
