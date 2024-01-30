@@ -35,9 +35,9 @@ class KNNRegressor():
 
 
 if __name__ == "__main__":
-    import pandas as pd 
     from sklearn.preprocessing import StandardScaler
     from sklearn.model_selection import train_test_split
+    from sklearn.preprocessing import LabelEncoder
 
     df = pd.read_csv("/Users/ammarahmed/My Files/Code Files/100_Days_ML_Code/ML Using Core Libraries/datasets/50_Startups.csv")
     X = df.iloc[:, :-1].values
@@ -48,7 +48,6 @@ if __name__ == "__main__":
     X[:, [0, 2]] = imputer.fit_transform(X[:, [0, 2]])
     X
 
-    from sklearn.preprocessing import LabelEncoder
     le_X = LabelEncoder()
     X[:, -1] = le_X.fit_transform(X[:, -1])
     X
