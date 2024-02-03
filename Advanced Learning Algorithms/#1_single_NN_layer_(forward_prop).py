@@ -2,7 +2,7 @@ import numpy as np
 
 # NN with 1 hidden layer having 3 units.
 
-X_sample = np.array([9, 190])
+a_0 = np.array([[9, 190], [1, 110]])
 
 W_1 = np.array([
     [0.001, 0.003],
@@ -12,7 +12,7 @@ W_1 = np.array([
 
 B_1 = np.array([0.004, 0.001, 0.002])
 
-a_1 = np.dot(X_sample, W_1.T) + B_1
+a_1 = (1 / (1 + np.exp(-(np.dot(a_0, W_1.T) + B_1))))
 
 print(f"a1: {a_1}")
 
@@ -21,9 +21,9 @@ print(f"a1: {a_1}")
 W_2 = np.array([0.001, 0.003, 0.002])
 b = 0.0071
 
-z = np.dot(a_1, W_2) + b
+a_2 = np.dot(a_1, W_2) + b
 
-output = 1 / (1 + np.exp(-z))
+output = 1 / (1 + np.exp(-a_2))
 
 print(f"Output: {output}")
 
