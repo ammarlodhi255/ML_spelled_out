@@ -2,7 +2,7 @@ import numpy as np
 
 # NN with 1 hidden layer having 3 units.
 
-a_0 = np.array([[9, 190], [1, 110]])
+a_0 = np.array([[9, 190]])
 
 W_1 = np.array([
     [0.001, 0.003],
