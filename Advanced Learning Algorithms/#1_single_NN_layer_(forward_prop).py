@@ -1,8 +1,8 @@
 import numpy as np 
 
-X_sample = np.array([9, 190])
+# NN with 1 hidden layer having 3 units.
 
-num_of_neurons = 3
+X_sample = np.array([9, 190])
 
 W_1 = np.array([
     [0.001, 0.003],
@@ -12,10 +12,9 @@ W_1 = np.array([
 
 B_1 = np.array([0.004, 0.001, 0.002])
 
-a_1 = np.zeros((num_of_neurons,))
+a_1 = np.dot(X_sample, W_1.T) + B_1
 
-for i in range(num_of_neurons):
-    a_1[i] = np.dot(X_sample, W_1[i]) + B_1[i]
+print(f"a1: {a_1}")
 
 
 # Final Layer (Output Layer)
