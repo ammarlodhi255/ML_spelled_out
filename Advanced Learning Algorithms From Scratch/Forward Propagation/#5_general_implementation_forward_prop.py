@@ -17,6 +17,11 @@ def dense(a_in, W, b):
     return a_n
 
 
+def vectorized_dense(a_in, W, b):
+    # return g(np.dot(a_in, W) + b)
+    return g(np.matmul(a_in, W) + b)
+
+
 if __name__ == '__main__':
     W = np.array([
         [1, -3, 5],
@@ -29,3 +34,4 @@ if __name__ == '__main__':
 
 
     print(dense(a_in, W, b))
+    print(vectorized_dense(a_in, W, b))
