@@ -19,7 +19,7 @@ def dense(a_in, W, b):
 
 def vectorized_dense(a_in, W, b):
     # return g(np.dot(a_in, W) + b)
-    return g(np.matmul(a_in, W) + b)
+    return g(np.matmul(a_in.T, W) + b)
 
 
 if __name__ == '__main__':
